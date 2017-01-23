@@ -71,6 +71,10 @@ extension Collection where Iterator.Element == Translation
 				
 				case .hasPlurals(let plurals):
 					translatedTerm = plurals["other"]
+                    // make sure that the translated term contains a %d for swiftgen
+                    if !translatedTerm.contains("%") {
+                        translatedTerm = "%d " + translatedTerm
+                }
 				
 				case .notTranslated:
 					continue
