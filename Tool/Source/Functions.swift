@@ -95,14 +95,7 @@ func processJSON(data: Data, outputFolderURL: URL) throws
 			preconditionFailure("Translation without a term is not supported.")
 		}
         
-        let context: String = { () -> String in
-            let context: String = translation["context"] as? String ?? ""
-            if context.isEmpty {
-                return "Localizable.strings"
-            } else {
-                return context
-            }
-        }()
+        let context: String = "Localizable.strings" // always use Localizable.strings
 		
 		let translated: TranslatedTerm
 		
